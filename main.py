@@ -9,7 +9,7 @@ from utils.displayFunctions import *
 window = tk.Tk()
 window.title("Encryption")
 window.geometry("480x360")
-window.config(background='#adfeff')
+window.config(bg='#adfeff')
 frame = tk.Frame(window, bg='#adfeff')
 frame.pack()
 #---------
