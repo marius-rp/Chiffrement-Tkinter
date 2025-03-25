@@ -78,10 +78,10 @@ Execution
 -------------------------"""
 
 def executionEncryption (userInput, gap):
-    EncryptionSpace= changeSpace(userInput)
-    EncryptionCaesar = encryptionEnd(EncryptionSpace, gap)
-    EncryptionASCII = hex(int.from_bytes(EncryptionCaesar.encode(), 'big'))
-    return EncryptionASCII
+    encryptionSpace= changeSpace(userInput)
+    encryptionCaesar = encryptionEnd(encryptionSpace, gap)
+    encryptionASCII = hex(int.from_bytes(encryptionCaesar.encode(), 'big'))
+    return encryptionASCII
 
 def executionDecryption (userInput, gap):
     removeUnnecessaryCharacter = userInput[2:]
@@ -89,3 +89,16 @@ def executionDecryption (userInput, gap):
     descryptionCaesar = decryptionEnd(decryptionASCII, gap)
     descryptionSpace= addSpace(descryptionCaesar)
     return descryptionSpace
+
+def  execution(userInput, gapInput, executionFunction, tk, mainElement, recoveryText):
+    user = userInput.get()
+    gap = int(gapInput.get())
+
+    response = executionFunction(user, gap)
+
+    labelRecovery = tk.Label(mainElement[1], text=recoveryText, font=(
+        "Times New Roman", 12), bg='#adfeff', fg='black')
+    recovery = tk.Entry(mainElement[1], width=30)
+    recovery.insert(0, response)
+    labelRecovery.pack()
+    recovery.pack()

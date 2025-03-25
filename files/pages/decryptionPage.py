@@ -1,4 +1,5 @@
 from utils.additionalFunction import *
+from utils.cleanupDisplay import destroy
 from utils.logicFunctions import executionDecryption
 
 
@@ -11,4 +12,4 @@ def decryptionPage(frame, tk, text, descriptionText, recoveryTextDecryption):
     mainElement = DisplayingMainElement(tk, frame, text)
 
     returnInput = DisplayingSecondaryElement(
-        tk, mainElement, descriptionText, lambda: executionDecryption(returnInput[0], returnInput[1]), recoveryTextDecryption)
+        tk, mainElement, descriptionText, executionDecryption, recoveryTextDecryption)
