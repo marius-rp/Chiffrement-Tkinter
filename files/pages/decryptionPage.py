@@ -2,12 +2,13 @@ from utils.additionalFunction import *
 from utils.logicFunctions import executionDecryption
 
 
-def decryptionPage(window, tk, text, descriptionText, recoveryTextDecryption):
+def decryptionPage(frame, tk, text, descriptionText, recoveryTextDecryption):
 
     # Delete previous window
-    #destroy(frame)
+    destroy(frame)
 
     # Display of main elements
-    mainElement = DisplayingMainElement(tk, window, text)
+    mainElement = DisplayingMainElement(tk, frame, text)
+
     returnInput = DisplayingSecondaryElement(
         tk, mainElement, descriptionText, lambda: executionDecryption(returnInput[0], returnInput[1]), recoveryTextDecryption)

@@ -4,15 +4,15 @@ def destroy(frame):
         widget.destroy()
 
 # Generation of main frames and title
-def DisplayingMainElement(tk, window, text):
-    frame = tk.Frame(window, bg='#adfeff')
-    frameSecondary = tk.Frame(frame, bg='#adfeff')
-    titleLabel = tk.Label(frame, text=text, font=(
+def DisplayingMainElement(tk, frame, text):
+    titleFrame = tk.Frame(frame, bg='#adfeff')
+    frameSecondary = tk.Frame(titleFrame, bg='#adfeff')
+    titleLabel = tk.Label(titleFrame, text=text, font=(
         "Times New Roman", 20), bg='#adfeff', fg='black')
-    frame.pack()
+    titleFrame.pack()
     titleLabel.pack()
     frameSecondary.pack()
-    return frame, frameSecondary
+    return titleFrame, frameSecondary
 
 # Generation of secondary frames and texts
 def DisplayingSecondaryElement(tk, mainElement, descriptionText, functionDefined, recoveryText):
