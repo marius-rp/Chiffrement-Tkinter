@@ -2,6 +2,8 @@
 from utils.logicFunctions import execution
 
 # Generation of main frames and title
+
+
 def DisplayingMainElement(tk, frame, text):
     titleFrame = tk.Frame(frame, bg='#adfeff')
     frameSecondary = tk.Frame(frame, bg='#adfeff')
@@ -13,6 +15,8 @@ def DisplayingMainElement(tk, frame, text):
     return titleFrame, frameSecondary
 
 # Generation of secondary frames and texts
+
+
 def DisplayingSecondaryElement(tk, mainElement, descriptionText, executionFunction, recoveryText):
 
     textGap = "Encryption key : "
@@ -21,14 +25,16 @@ def DisplayingSecondaryElement(tk, mainElement, descriptionText, executionFuncti
         "Times New Roman", 12), bg='#adfeff', fg='black')
     labelgap = tk.Label(mainElement[1], text=textGap, font=(
         "Times New Roman", 12), bg='#adfeff', fg='black')
-    
+
     userInput = tk.Entry(mainElement[1], width=30)
     gapInput = tk.Entry(mainElement[1], width=5)
+    responseFrame = tk.Frame(mainElement[1], bg='#adfeff')
 
     labelEntry.pack()
     userInput.pack()
     labelgap.pack()
     gapInput.pack()
 
-    button = tk.Button(mainElement[1], width=10, text="Valider", command=lambda: execution(userInput, gapInput, executionFunction, tk, mainElement, recoveryText))
+    button = tk.Button(mainElement[1], width=10, text="Valider", command=lambda: execution(
+        userInput, gapInput, executionFunction, tk, responseFrame, recoveryText))
     button.pack()
