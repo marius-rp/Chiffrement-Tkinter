@@ -5,11 +5,14 @@ from utils.logicFunctions import executionDecryption
 
 def decryptionPage(frame, tk, text, descriptionText, recoveryTextDecryption):
 
-    # Delete previous window
-    destroy(frame)
+    try:
+        # Delete previous window
+        destroy(frame)
 
-    # Display of main elements
-    mainElement = DisplayingMainElement(tk, frame, text)
+        # Display of main elements
+        mainElement = DisplayingMainElement(tk, frame, text)
 
-    returnInput = DisplayingSecondaryElement(
-        tk, mainElement, descriptionText, executionDecryption, recoveryTextDecryption)
+        secondaryElement = DisplayingSecondaryElement(
+            tk, mainElement, descriptionText, executionDecryption, recoveryTextDecryption)
+    except:
+        messageError(tk, mainElement, secondaryElement[0])

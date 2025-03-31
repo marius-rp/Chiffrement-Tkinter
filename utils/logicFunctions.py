@@ -1,5 +1,6 @@
 import random
 
+from utils import messageError
 from utils.cleanupDisplay import destroy
 
 ### Fonctions ###
@@ -9,7 +10,7 @@ Ecryption
 -------------------------"""
 
 
-def encryptionEnd(text, decalage):
+def encryptionEnd(text, decalage, tk, mainElement):
     try:
         result = ""
         for char in text:
@@ -19,11 +20,12 @@ def encryptionEnd(text, decalage):
                 result += char
         return result
     except Exception as e:
-        print(f"Error in text encryption: {e}")
-        return None
+        textError = "Error in end encryption"
+        responseError = messageError(tk, mainElement, textError)
+        return responseError
 
 
-def changeSpace(text):
+def changeSpace(text, tk, mainElement):
     try:
         caracteres_possibles = ["*", "£", "$"]
         textModifie = "".join(random.choice(
@@ -31,15 +33,15 @@ def changeSpace(text):
         return textModifie
     except:
         textError = "Error in the encryption of spaces"
-        print(textError, "red")
-
+        responseError = messageError(tk, mainElement, textError)
+        return responseError
 
 """-------------------------
 Decryption
 -------------------------"""
 
 
-def decryptionEnd(text, decalage):
+def decryptionEnd(text, decalage, tk, mainElement):
     try:
         result = ""
         for char in text:
@@ -49,12 +51,12 @@ def decryptionEnd(text, decalage):
                 result += char
         return result
     except Exception as e:
-        textError = f"Error in text decryption: {e}"
-        print(textError, "red")
-        return None
+        textError = "Error in text end decryption"
+        responseError = messageError(tk, mainElement, textError)
+        return responseError
 
 
-def addSpace(text):
+def addSpace(text, tk, mainElement):
     try:
         caracteresPossibles = ["*", "£", "$"]
         textModifie = "".join(
@@ -62,7 +64,8 @@ def addSpace(text):
         return textModifie
     except:
         textError = "Error in the encryption of spaces"
-        print(textError, "red")
+        responseError = messageError(tk, mainElement, textError)
+        return responseError
 
 
 """-------------------------
@@ -70,38 +73,39 @@ Execution
 -------------------------"""
 
 
-def executionEncryption(userInput, gap):
+def executionEncryption(userInput, gap, tk, mainElement):
     try:
-        encryptionSpace = changeSpace(userInput)
-        encryptionCaesar = encryptionEnd(encryptionSpace, gap)
+        encryptionSpace = changeSpace(userInput, tk, mainElement)
+        encryptionCaesar = encryptionEnd(encryptionSpace, gap, tk, mainElement)
         encryptionASCII = hex(int.from_bytes(encryptionCaesar.encode(), 'big'))
         return encryptionASCII
     except Exception as err:
-        textError = f"Error in execution: {err}"
-        print(textError, "red")
+        textError = "Error in execution encryption"
+        responseError = messageError(tk, mainElement, textError)
+        return responseError
 
 
-def executionDecryption(userInput, gap):
+def executionDecryption(userInput, gap, tk, mainElement,):
     try:
         removeUnnecessaryCharacter = userInput[2:]
         decryptionASCII = bytes.fromhex(removeUnnecessaryCharacter).decode()
-        descryptionCaesar = decryptionEnd(decryptionASCII, gap)
-        descryptionSpace = addSpace(descryptionCaesar)
+        descryptionCaesar = decryptionEnd(decryptionASCII, gap, tk, mainElement)
+        descryptionSpace = addSpace(descryptionCaesar, tk, mainElement)
         return descryptionSpace
     except Exception as err:
-        textError = f"Error in decryption: {err}"
-        print(textError, "red")
+        textError = "Error in decryption"
+        responseError = messageError(tk, mainElement, textError)
+        return responseError
 
 
-def execution(userInput, gapInput, executionFunction, tk, responseFrame, recoveryText):
+def execution(userInput, gapInput, executionFunction, tk, responseFrame, recoveryText, mainElement):
     try:
-        responseFrame.pack()
+        responseFrame.pack(pady=(20, 0))
         destroy(responseFrame)
 
         user = userInput.get()
         gap = int(gapInput.get())
-
-        response = executionFunction(user, gap)
+        response = executionFunction(user, gap, tk, mainElement)
 
         labelRecovery = tk.Label(responseFrame, text=recoveryText, font=(
             "Times New Roman", 12), bg='#adfeff', fg='black')
@@ -111,4 +115,5 @@ def execution(userInput, gapInput, executionFunction, tk, responseFrame, recover
         recovery.pack()
     except:
         textError = "Error in frame display"
-        print(textError)
+        responseError = messageError(tk, mainElement, textError)
+        return responseError
