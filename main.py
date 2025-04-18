@@ -8,6 +8,7 @@ from utils.displayMain import displayMain
 from utils.additionalFunction import *
 from utils.displayFunctions import *
 
+#link transformation function for compilation
 def resource_path(relative_path):
     try:
         base_path = sys._MEIPASS
