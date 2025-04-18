@@ -1,3 +1,4 @@
+# Version FR
 # Application de Chiffrement et Déchiffrement Sécurisé
 
 ## Description
@@ -33,3 +34,42 @@ Ce projet est sous licence MIT. Cela signifie que vous pouvez :
 
 ## Auteur
 Développé par Marius-rp.
+
+# EN Version 
+
+# Secure Encryption and Decryption Application
+
+## Description  
+This Python application offers a graphical interface developed with **Tkinter**, allowing users to **encrypt and decrypt messages securely**. It uses encryption algorithms to ensure data confidentiality.  
+
+It is designed to be easy to use, even without advanced knowledge in cryptography.  
+
+## Features  
+- Graphical interface with **Tkinter**.  
+- **Text encryption** with a user-defined key.  
+- **Secure decryption** with key verification.  
+- Easy copying of the encrypted or decrypted message.
+
+## Technologies Used  
+- **Python 3**  
+- **Tkinter** – Graphical interface.  
+- **`os-sys`** – For file and system management (standard module).  
+- **`random`** – Secure random generation (standard module).  
+
+## Prerequisites
+
+Before running the application, make sure the following are installed:  
+
+- **Python 3**: Downloadable here -> https://www.python.org/downloads  
+- **Tkinter**: Typically included with Python. If needed:  
+  ```bash
+  pip install tk  
+  ```
+
+## License  
+This project is licensed under the MIT License. This means you can:  
+
+- Use it freely, modify it, and share it, as long as you retain the original author’s credits.
+
+## Author  
+Developed by Marius-rp.
