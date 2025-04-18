@@ -1,6 +1,7 @@
 import tkinter as tk
 from files.pages.decryptionPage import decryptionPage
 from files.pages.encryptionPage import encryptionPage
+from utils.displayMain import displayMain
 from utils.additionalFunction import *
 from utils.displayFunctions import *
 
@@ -9,6 +10,8 @@ from utils.displayFunctions import *
 window = tk.Tk()
 window.title("Encryption")
 window.geometry("480x360")
+window.minsize(320, 240)
+window.maxsize(854, 480)
 window.config(bg='#adfeff')
 frame = tk.Frame(window, bg='#adfeff')
 frame.pack()
@@ -33,11 +36,14 @@ recoveryTextDecryption = returnTextDecryption[2]
 # Menu
 menu = tk.Menu(window)
 fileMenu = tk.Menu(menu, tearoff=0)
+fileMenu.add_command(label="Home", command=lambda: displayMain(frame, tk))
 fileMenu.add_command(label="Encryption", command=lambda: encryptionPage(frame, tk, titleTextEncryption, descriptionTextEncryption, recoveryTextEncryption))
 fileMenu.add_command(label="Decryption", command=lambda: decryptionPage(frame, tk, titleTextDecryption, descriptionTextDecryption, recoveryTextDecryption))
 menu.add_cascade(label="encryption", menu=fileMenu)
 menu.add_command(label="close", command=window.quit)
 
 window.config(menu=menu)
+
+displayMain(frame, tk)
 
 window.mainloop()
