@@ -13,7 +13,7 @@ Elle est conçue pour être simple à utiliser, même sans connaissances avancé
 
 ## Technologies utilisées
 - **Python 3**
-- **Tkinter** – Interface graphique
+- **Tkinter** – Interface graphique.
 - **`os-sys`** – Pour la gestion des fichiers et du système (module standard)
 - **`random`** – Génération aléatoire sécurisée (module standard)
 
@@ -29,9 +29,7 @@ Avant d'exécuter l'application, assurez-vous que les éléments suivants sont i
 ## Licence
 Ce projet est sous licence MIT. Cela signifie que vous pouvez :
 
--L’utiliser librement
--Le modifier
-Le partager, tant que vous conservez les mentions d’auteur d’origine
+- L’utiliser librement, le modifier, le partager, tant que vous conservez les mentions d’auteur d’origine.
 
 ## Auteur
-Développé par Marius-rp 
+Développé par Marius-rp.
