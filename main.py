@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import PhotoImage as PI
 from files.pages.decryptionPage import decryptionPage
 from files.pages.encryptionPage import encryptionPage
 from utils.displayMain import displayMain
@@ -12,6 +13,8 @@ window.title("Encryption")
 window.geometry("480x360")
 window.minsize(320, 240)
 window.maxsize(854, 480)
+logo = PI(file="img/Padlock.png")
+window.iconphoto(False, logo)
 window.config(bg='#adfeff')
 frame = tk.Frame(window, bg='#adfeff')
 frame.pack()
