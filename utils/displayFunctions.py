@@ -14,11 +14,7 @@ def textDecryption():
 
 def textHome():
     title = "Home encryption"
-    text = ("This software allows you to encrypt and decrypt letters, words, sentences, numbers "
-        "to protect your data. The software has its own encryption methods, and to decrypt the "
-        "password, your key will be essential. Decrypting data encrypted with other software is "
-        "useless because it won't work.")
-    print(text)
+    text = ("This software allows you to encrypt and decrypt letters, words, phrases, and numbers in order to protect your data. It has its own encryption methods, and your key will be essential to decrypt the password. Decrypting data encrypted with this software using other software is useless, as it will not work.")
     return title, text
 
 def resize_wrap(event, text_widget):

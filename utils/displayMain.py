@@ -1,24 +1,24 @@
 from utils.cleanupDisplay import destroy
 from utils.displayFunctions import resize_wrap, textHome
 
-def displayMain(frame, tk):
+def displayMain(frame, tk, colorbg, police):
     destroy(frame)
     descriptiontextHome = textHome()
 
     # Titre
-    titleFrame = tk.Frame(frame, bg='#adfeff')
+    titleFrame = tk.Frame(frame, bg=colorbg)
     titleLabel = tk.Label(
         titleFrame,
         text=descriptiontextHome[0],
-        font=("Times New Roman", 20),
-        bg='#adfeff',
+        font=(police, 20),
+        bg=colorbg,
         fg='black'
     )
     titleFrame.pack()
     titleLabel.pack()
 
     # Description + Scroll
-    frameSecondary = tk.Frame(frame, bg='#adfeff')
+    frameSecondary = tk.Frame(frame, bg=colorbg)
     frameSecondary.pack(fill="both", expand=True)
 
     # Scrollbar
@@ -30,8 +30,8 @@ def displayMain(frame, tk):
         frameSecondary,
         wrap="word",
         yscrollcommand=scrollbar.set,
-        font=("Times New Roman", 14),
-        bg='#adfeff',
+        font=(police, 14),
+        bg=colorbg,
         fg='black',
         borderwidth=0,
         highlightthickness=0

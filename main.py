@@ -1,3 +1,5 @@
+import sys
+import os
 import tkinter as tk
 from tkinter import PhotoImage as PI
 from files.pages.decryptionPage import decryptionPage
@@ -6,6 +8,14 @@ from utils.displayMain import displayMain
 from utils.additionalFunction import *
 from utils.displayFunctions import *
 
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except AttributeError:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
 #---------
 ### Initializing Tkinter ###
 window = tk.Tk()
@@ -13,10 +23,13 @@ window.title("Encryption")
 window.geometry("480x360")
 window.minsize(320, 240)
 window.maxsize(854, 480)
-logo = PI(file="img/Padlock.png")
+logo_path = resource_path("img/Padlock.png")
+logo = PI(file=logo_path)
+colorbg = "#d4d4b8"
+police="Sans-Serif"
 window.iconphoto(False, logo)
-window.config(bg='#adfeff')
-frame = tk.Frame(window, bg='#adfeff')
+window.config(bg=colorbg)
+frame = tk.Frame(window, bg=colorbg)
 frame.pack()
 #---------
 
@@ -39,14 +52,14 @@ recoveryTextDecryption = returnTextDecryption[2]
 # Menu
 menu = tk.Menu(window)
 fileMenu = tk.Menu(menu, tearoff=0)
-fileMenu.add_command(label="Home", command=lambda: displayMain(frame, tk))
-fileMenu.add_command(label="Encryption", command=lambda: encryptionPage(frame, tk, titleTextEncryption, descriptionTextEncryption, recoveryTextEncryption))
-fileMenu.add_command(label="Decryption", command=lambda: decryptionPage(frame, tk, titleTextDecryption, descriptionTextDecryption, recoveryTextDecryption))
+fileMenu.add_command(label="Home", command=lambda: displayMain(frame, tk, colorbg, police))
+fileMenu.add_command(label="Encryption", command=lambda: encryptionPage(frame, tk, titleTextEncryption, descriptionTextEncryption, recoveryTextEncryption, colorbg, police))
+fileMenu.add_command(label="Decryption", command=lambda: decryptionPage(frame, tk, titleTextDecryption, descriptionTextDecryption, recoveryTextDecryption, colorbg, police))
 menu.add_cascade(label="encryption", menu=fileMenu)
 menu.add_command(label="close", command=window.quit)
 
 window.config(menu=menu)
 
-displayMain(frame, tk)
+displayMain(frame, tk, colorbg, police)
 
 window.mainloop()
